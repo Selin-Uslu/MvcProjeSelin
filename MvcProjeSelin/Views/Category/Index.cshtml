@@ -1,54 +1,144 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Kategori Listesi</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #ECF0F1;
+            font-family: Arial, sans-serif;
+        }
 
-<h3>MVC KAMP TABLO ÖRNEĞİ-- KATEGORİ</h3>
-<br />
-<table class="table table-bordered">
-    <tr>
-        <th> ID </th>
-        <th> Adı</th>
-        <th> Açıklama</th>
-        <th>Durum</th>
+        h3 {
+            color: #006064; /* Koyu su yeşili */
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Tablo Stilleri */
+        table.table {
+            background-color: #fff;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            width: 80%;
+        }
 
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Eğitim</td>
-        <td>Açıklama Yapıldı </td>
-        <td>True</td>
-        <td><button class="btn btn-success">Güncelle</button></td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Spor</td>
-        <td>Açıklama Yapıldı</td>
-        <td>True</td>
-        <td><button class="btn btn-success">Güncelle</button></td>
+            table.table th {
+                /* Açık mavi ile su yeşili arasında geçişli gradient (koyu tonlar) */
+                background: linear-gradient(135deg, #81C4F7, #00ACC1);
+                color: #fff;
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
 
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Tiyatro</td>
-        <td>Açıklama Yapıldı</td>
-        <td>True</td>
-        <td><button class="btn btn-success">Güncelle</button></td>
+            table.table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: center;
+            }
 
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Sinema</td>
-        <td>Açıklama Bekleniyor</td>
-        <td>True</td>
-        <td><button class="btn btn-success">Güncelle</button></td>
+            table.table tr:nth-child(even) {
+                background-color: #f7f7f7;
+            }
 
-    </tr>
+            table.table tr:hover {
+                background-color: #e0f0f5;
+            }
+        /* Buton Stilleri */
+        .btn {
+            margin: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
-</table>
-<button class="btn btn-success">Yeni Kategori</button>
-<button class="btn btn-warning">Kategori Listesi</button>
-<button class="btn btn-danger">Kategori Açıklaması</button>
+        .btn-lightblue {
+            background-color: #81C4F7;
+            border: 1px solid #5BA4F0;
+            color: #006064;
+        }
+
+            .btn-lightblue:hover {
+                background-color: #5BA4F0;
+            }
+
+        .btn-water {
+            background-color: #00ACC1;
+            border: 1px solid #00838F;
+            color: #fff;
+        }
+
+            .btn-water:hover {
+                background-color: #00838F;
+            }
+
+        .btn-teal {
+            background-color: #006064;
+            border: 1px solid #005053;
+            color: #fff;
+        }
+
+            .btn-teal:hover {
+                background-color: #005053;
+            }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <br />
+    <br />
+    <br />
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Adı</th>
+            <th>Açıklama</th>
+            <th>Durum</th>
+            <th>İşlem</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Eğitim</td>
+            <td>Açıklama Yapıldı</td>
+            <td>True</td>
+            <td><button class="btn btn-water">Güncelle</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Spor</td>
+            <td>Açıklama Yapıldı</td>
+            <td>True</td>
+            <td><button class="btn btn-water">Güncelle</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Tiyatro</td>
+            <td>Açıklama Yapıldı</td>
+            <td>True</td>
+            <td><button class="btn btn-water">Güncelle</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Sinema</td>
+            <td>Açıklama Bekleniyor</td>
+            <td>True</td>
+            <td><button class="btn btn-water">Güncelle</button></td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <button class="btn btn-lightblue">Yeni Kategori</button>
+        <button class="btn btn-water">Kategori Listesi</button>
+        <button class="btn btn-teal">Kategori Açıklaması</button>
+    </div>
+</body>
+</html>

@@ -6,6 +6,79 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<!-- Özel Stil -->
+<style>
+    /* Tablo Temel Stili */
+    .custom-table {
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #ECF0F1; /* Açık gri zemin */
+    }
+
+        .custom-table thead {
+            background: linear-gradient(135deg, #34495E, #1ABC9C);
+            color: #fff;
+        }
+
+        .custom-table th, .custom-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #dff0d8;
+        }
+    /* Buton Stilleri */
+    .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #E74C3C;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #C0392B;
+        }
+
+    .btn-warning {
+        background-color: #F39C12;
+        color: #fff;
+    }
+
+        .btn-warning:hover {
+            background-color: #D68910;
+        }
+
+    .btn-primary {
+        background-color: #3498DB;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980B9;
+        }
+
+    .btn-info {
+        background-color: #1ABC9C;
+        color: #fff;
+    }
+
+        .btn-info:hover {
+            background-color: #16A085;
+        }
+</style>
+
 <br />
 
 <table class="table table-bordered table-hover custom-table">
@@ -13,25 +86,23 @@
         <tr>
             <th>ID</th>
             <th>Kategori Adı</th>
-
             <th>Sil</th>
             <th>Güncelle</th>
             <th>Başlıklar</th>
         </tr>
-
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.CategoryID</td>
                 <td>@item.CategoryName</td>
-
                 <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-danger">Sil</a></td>
                 <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-warning">Güncelle</a></td>
                 <td><a href="#" class="btn btn-primary">Başlıklar</a></td>
             </tr>
         }
-
-
+    </tbody>
 </table>
 <br />
-<a href="/AdminCategory/AddCategory"  class="btn btn-info">Yeni Kategori</a>
+<a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>

@@ -7,21 +7,145 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Renk Değişkenleri */
+        :root {
+            --turuncu: #FF6F00; /* Canlı Turuncu */
+            --beyaz: #FFFFFF; /* Beyaz */
+            --siyah: #000000; /* Siyah */
+        }
+
+        body {
+            background: var(--beyaz);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--siyah);
+            margin: 0;
+            padding: 0;
+        }
+        /* Sayfa Başlığı */
+        h1 {
+            font-size: 1.75rem;
+            margin: 20px 0;
+            font-weight: 700;
+            text-align: center;
+        }
+        /* Kart Yapısı */
+        .card {
+            border: 1px solid var(--turuncu);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+            .card.bg-light {
+                background-color: var(--beyaz) !important;
+            }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--turuncu), #e65c00);
+            color: var(--beyaz);
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+        /* Meslek ve Yazar Adı alt alta, aralarında boşluk */
+        .writer-title {
+            display: block;
+        }
+
+        .writer-name {
+            display: block;
+            margin-top: 6px;
+            font-size: 1.05rem;
+        }
+
+        .card-body {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: var(--siyah);
+            background: var(--beyaz);
+        }
+
+        .card-footer {
+            background: var(--beyaz);
+            border-top: 1px solid var(--turuncu);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .lead {
+            font-size: 1rem;
+            margin-bottom: 0;
+            font-weight: 700;
+            color: var(--siyah);
+        }
+
+        p.text-muted {
+            font-size: 0.8rem;
+            margin: 4px 0;
+            color: var(--siyah);
+        }
+        /* E-posta Metninin Tek Satırda Kalması */
+        .mail-line {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fa-ul li {
+            margin-bottom: 2px;
+        }
+        /* Butonlar - Tek Renk (Siyah) */
+        .btn {
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            margin: 2px;
+            border: none;
+            border-radius: 4px;
+            background: var(--siyah);
+            color: var(--beyaz);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+            .btn:hover {
+                background: #333333;
+            }
+        /* Kullanıcı Görselleri */
+        .img-circle {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+        /* Responsive Mail Alanı */
+        .mail-container {
+            max-width: 100%;
+        }
+    </style>
+</head>
 <body class="hold-transition sidebar-mini">
-    <!-- /.navbar -->
-    <!-- Content Header (Page header) -->
+    <!-- Content Header (Sayfa Başlığı) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <h1>Yazarlar Sayfası</h1>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
-    <!-- Main content -->
+    <!-- Main Content -->
     <section class="content">
-        <!-- Default box -->
+        <!-- Kartlar -->
         <div class="card card-solid">
             <div class="card-body pb-0">
                 <div class="row d-flex align-items-stretch">
@@ -29,34 +153,30 @@
                     {
                         <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
                             <div class="card bg-light">
-                                <div class="card-header text-muted border-bottom-0">
-                                    @item.WriterTitle
+                                <!-- Meslek ve Yazar Adı alt alta -->
+                                <div class="card-header">
+                                    <span class="writer-title">@item.WriterTitle</span>
+                                    <span class="writer-name">@item.WriterName @item.WriterSurName</span>
                                 </div>
                                 <div class="card-body pt-0">
                                     <div class="row">
                                         <div class="col-7">
-                                            <h2 class="lead"><b>@item.WriterName @item.WriterSurName</b></h2>
-                                            <p class="text-muted text-sm"><b>Hakkında: </b> 
-                                            @item.WriterAbout</p>
-                                            <ul class="ml-4 mb-0 fa-ul text-muted">
-                                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Mail:@item.WriterMail</li>
-                                                
+                                            <p class="text-muted text-sm"><b>Hakkında: </b>@item.WriterAbout</p>
+                                            <ul class="ml-4 mb-0 fa-ul">
+                                                <li class="small mail-container">
+                                                    <span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span>
+                                                    <span class="mail-line">Mail: @item.WriterMail</span>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div class="col-5 text-center">
-                                            <img src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="" class="img-circle img-fluid">
+                                            <img src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-circle img-fluid">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="text-right">
-                                        <a href="#" class="btn btn-sm bg-teal">
-                                            <i class="fas fa-comments">Yazarın Başlıkları</i>
-                                        </a>
-                                        <a href="/Writer/EditWriter/@item.WriterId" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-user"></i> Profili Düzenle
-                                        </a>
-                                    </div>
+                                    <a href="#" class="btn btn-sm">Başlıklar</a>
+                                    <a href="/Writer/EditWriter/@item.WriterId" class="btn btn-sm">Düzenle</a>
                                 </div>
                             </div>
                         </div>
@@ -64,8 +184,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.card -->
     </section>
-    <!-- /.content -->
 </body>
 </html>
