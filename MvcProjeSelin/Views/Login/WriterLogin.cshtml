@@ -1,0 +1,223 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="tr">
+<head>
+    <title>Yazar Girişi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Özel CSS -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/login-form-20/css/style.css">
+
+    <style>
+        /* Arka plan: Statik üç renkli gradyan (Turkuaz, Mavi, Koyu Mavi) */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1abc9c, #3498db, #2c3e50);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Login kutusu: Arka plan gradyanla uyumlu koyu ton */
+        .login-wrap {
+            background: rgba(44, 62, 80, 0.95);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+        /* Başlık */
+        .heading-section {
+            font-size: 28px;
+            font-weight: 500;
+            color: #ecf0f1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        /* Input alanları: Koyu gri/mavi arka plan, net metin */
+        .form-control {
+            width: 100%;
+            height: 45px;
+            background: #34495e;
+            border: none;
+            border-radius: 8px;
+            padding: 0 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #ecf0f1;
+        }
+
+            .form-control::placeholder {
+                color: #95a5a6;
+            }
+        /* Giriş butonu: Canlı turkuaz */
+        .btn-primary {
+            width: 100%;
+            height: 45px;
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #16a085;
+            }
+        /* Şifre alanındaki toggle simgesi */
+        .field-icon {
+            cursor: pointer;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ecf0f1;
+        }
+        /* Giriş seçenekleri (checkbox ve "Şifremi Unuttum") */
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #ecf0f1;
+            margin-bottom: 20px;
+        }
+
+            .login-options label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .login-options input {
+                margin-right: 5px;
+            }
+
+            .login-options a {
+                color: #1abc9c;
+                text-decoration: none;
+            }
+
+                .login-options a:hover {
+                    text-decoration: underline;
+                }
+        /* Sosyal medya giriş başlığı */
+        .social-login {
+            text-align: center;
+            color: #bdc3c7;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        /* Sosyal medya butonları: Dikdörtgen biçiminde, kendine has renklerle */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .social-button i {
+                margin-right: 8px;
+            }
+
+            .social-button.facebook {
+                background-color: #3b5998;
+            }
+
+                .social-button.facebook:hover {
+                    background-color: #324b81;
+                }
+
+            .social-button.twitter {
+                background-color: #1DA1F2;
+            }
+
+                .social-button.twitter:hover {
+                    background-color: #1991da;
+                }
+    </style>
+</head>
+<body>
+    <div class="login-wrap">
+        <h2 class="heading-section">Yazar Girişi</h2>
+        <h4 class="mb-4 text-center" style="color: #bdc3c7;">Hesabınız Var Mı? Giriş Yapın</h4>
+        @using (Html.BeginForm("WriterLogin", "Login", FormMethod.Post))
+        {
+            <div class="form-group position-relative">
+                <input type="text" name="WriterEmail" class="form-control" placeholder="Mail Adresiniz" required>
+            </div>
+            <div class="form-group position-relative">
+                <input id="password-field" name="WriterPassword" type="password" class="form-control" placeholder="Şifreniz" required>
+                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            </div>
+            <div class="login-options">
+                <label>
+                    <input type="checkbox" name="RememberMe" checked> Beni Hatırla
+                </label>
+                <a href="#">Şifremi Unuttum?</a>
+            </div>
+        }
+        <div class="social-login">
+            Sosyal Medya ile Giriş Yapın:
+        </div>
+        <div class="social-buttons">
+            <a href="#" class="social-button facebook" title="Facebook ile Giriş Yap">
+                <i class="fa fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="social-button twitter" title="Twitter ile Giriş Yap">
+                <i class="fa fa-twitter"></i> Twitter
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript dosyaları -->
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/popper.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/bootstrap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/login-form-20/js/main.js"></script>
+    <script>
+        // Şifre alanındaki toggle simgesinin işlevi
+        $(".toggle-password").click(function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") === "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -19,7 +19,7 @@ namespace BusinessLayer.Concrete
 
         public Message GetById(int id)
         {
-            throw new NotImplementedException();
+           return _messageDal.Get(x => x.MessageID == id);
         }
 
         public List<Message> GetListInbox()

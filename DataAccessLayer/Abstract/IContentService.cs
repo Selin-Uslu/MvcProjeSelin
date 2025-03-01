@@ -10,6 +10,7 @@ namespace DataAccessLayer.Abstract
     public  interface IContentService
     {
         List<Content> GetList();
+        List<Content> GetListByWriter();
         List<Content> GetListByHeadingID(int id);
         void ContentAdd(Content category);
         Content GetById(int id);
